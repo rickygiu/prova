@@ -2,6 +2,18 @@
 <% provide :title, 'Home' %>
 
 <% if signed_in? %>
+
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <%=link_to "Home",    root_path %></a>
+      </li>
+      <li><a href="#">Ricette</a></li>
+      <li><a href="#">Menù</a></li>
+      <li><a href="#">Followers</a></li>
+      <li><%= link_to "Profilo", current_user %></a></li>
+      <li><%=link_to "Info",     faq_path %></li>
+    </ul>
+
   <div class="row">
     <aside class="span4">
       <section>
@@ -18,13 +30,15 @@
     </div>
   </div>
 <% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to FoodBook</h1>
+    <div class="center hero-unit">
+      <h1>Welcome to FoodBook</h1>
+      <%=link_to "Login", signin_path, class: 'btn btn-large btn-primary' %>
+      <%= link_to 'Registrati', signup_path, class: 'btn btn-large btn-primary' %>
+      <%=link_to "Info", faq_path, class: 'btn btn-large btn-primary' %>
 
-    <h2>
-      Sign up or login to start using FoodBook.
-    </h2>
+      <h2>
+        Sign up or login to start using FoodBook.
+      </h2>
 
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-primary' %>
-</div>
+    </div>
 <% end %>
